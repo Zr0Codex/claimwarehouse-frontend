@@ -23,7 +23,7 @@
 }
 
 .App {
-  font-family: sans-serif;
+  font-family: "DBOzoneX";
 }
 
 .cell {
@@ -41,4 +41,8 @@
 
 .ant-picker-cell:hover .ant-picker-calendar-date {
   background-color: white;
+}
+
+.ant-layout-content {
+  padding: 10px;
 }

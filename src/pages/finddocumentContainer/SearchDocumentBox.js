@@ -15,7 +15,7 @@ const SearchDocumentBox = () => {
         prefix={<SearchOutlined />}
         placeholder="เลขที่กล่องสินไหม/ประเภทเอกสาร/สถานะกล่อง"
         style={{
-          ontFamily: "DBOzoneX",
+          fontFamily: "DBOzoneX",
           width: "600px",
           borderRadius: "10px",
         }}
