@@ -1,0 +1,72 @@
+{
+  "sub1": [
+    {
+      "Id": "1",
+      "Item": "ค้นหากล่องเอกสาร <br/> (สำหรับเจ้าหน้าที่งานคลัง)",
+      "url": "/home/find_document_box",
+      "view_role": ["admin"]
+    },
+    {
+      "Id": "2",
+      "Item": "ค้นหาเอกสาร <br/> (สำหรับผู้ขอเบิกเอกสาร)",
+      "url": "/home/store_document_user",
+      "view_role": ["admin", "user"]
+    },
+    {
+      "Id": "3",
+      "Item": "จัดเก็บเอกสาร",
+      "url": "/home/requisition_document",
+      "view_role": ["admin", "user"]
+    },
+    {
+      "Id": "4",
+      "Item": "เบิกเอกสาร",
+      "url": "/home/requisition_document",
+      "view_role": ["admin", "user"]
+    },
+    {
+      "Id": "5",
+      "Item": "ย้ายเอกสาร",
+      "url": "/home/transpose_document",
+      "view_role": ["admin", "user"]
+    },
+    {
+      "Id": "6",
+      "Item": "ติดตามการเบิกเอกสาร",
+      "url": "/home/tracking_document",
+      "view_role": ["admin", "user"]
+    },
+    {
+      "Id": "7",
+      "Item": "ทะเบียนตรวจรับเอกสาร",
+      "url": "/home/try_document",
+      "view_role": ["admin", "user"]
+    },
+    {
+      "Id": "8",
+      "Item": "อัพโหลดเอกสารเข้า DIM",
+      "url": "/home/DIM_document",
+      "view_role": ["admin", "user"]
+    } 
+  ],
+  "sub2": [
+    {
+      "Id": "9",
+      "Item": "รายการใบเบิกเอกสาร ",
+      "url": "/home/requisition_document_list",
+      "view_role": ["admin", "user"]
+    },
+    {
+      "Id": "10",
+      "Item": "สรุปผลการปฏิบัติงานการเบิกเอกสาร ",
+      "url": "/home/requisition_document_report",
+      "view_role": ["admin", "user"]
+    },
+    {
+      "Id": "11",
+      "Item": "รายงานสถิติการจัดเก็บเอกสารสินไหม ",
+      "url": "/home/document_claim_report",
+      "view_role": ["admin", "user"]
+    }
+  ]
+}

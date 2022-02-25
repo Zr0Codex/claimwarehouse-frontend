@@ -1,0 +1,69 @@
+#content2::before{
+  content: "\a";
+  white-space: pre;
+}
+
+.content p{   
+  display: -webkit-box;   
+  -webkit-line-clamp: 3;   
+  -webkit-box-orient: vertical;   
+  overflow: hidden; 
+}
+
+p span {
+  display: block;
+}
+
+.sammy-wrap {
+  border-radius: 6px;
+  background-color: aliceblue;
+  border: 2px dashed gray;
+  max-width: 70%;
+  padding: 1em;
+  margin-bottom: .4em;
+  line-break: normal;
+}
+
+// .ant-menu-item {
+//   .ant-menu-item-only-child{
+//     white-space: normal;
+//   }
+// }
+
+.ant-menu-title-content{
+  white-space: normal;
+}
+
+.ant-menu-item-selected {
+  background-color: #E6F7FF !important;
+}
+
+.ant-menu-submenu-open {
+  color: #000000;
+  background-color: #60BAFF !important;
+}
+
+.ant-menu-title-content {
+  margin-left: 10px !important;
+}
+
+// .ant-menu-submenu .ant-menu-submenu-inline {
+//   height: 63px;
+// }
+
+// .ant-menu-submenu-open {
+//   background-color: #60BAFF;
+// }
+
+
+// .ant-menu > .ant-menu-item:hover,
+// .ant-menu > .ant-menu-submenu:hover,
+// .ant-menu > .ant-menu-item-active,
+// .ant-menu> .ant-menu-submenu-active,
+// .ant-menu > .ant-menu-item-open,
+// .ant-menu> .ant-menu-submenu-open,
+// .ant-menu > .ant-menu-item-selected,
+// .ant-menu > .ant-menu-submenu-selected {
+//   color: #000000;
+//   background-color: #60BAFF  !important; 
+// }

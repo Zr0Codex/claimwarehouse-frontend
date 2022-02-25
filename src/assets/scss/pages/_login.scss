@@ -1,0 +1,153 @@
+.app-login{
+    
+    .container-fluid{
+        @include flex(center, center);
+        position: absolute;
+        min-height: 100vh;
+        .ant-form{
+            width: 100%;
+            max-width: 385px;
+            .ant-btn-primary{
+                width: 100%;
+             }
+    
+        }
+    }
+
+}
+
+            
+::-webkit-scrollbar {
+    width: 8px;
+  }
+   
+  ::-webkit-scrollbar-track {
+    background-color: #aaa;
+  }
+   
+  ::-webkit-scrollbar-thumb {
+    background-color: #335ddc;
+    border-radius: 8px;
+  }
+  
+  body {
+    font-family: 'DBOzoneX';
+  }
+  
+  .login-page {
+    margin-top: 12px;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // max-width: 100%;
+    // min-height: 100vh;
+    //background: #d9edff;
+  }
+  .login-box {
+    display: flex;
+    //justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    max-width: 100%;
+    // height: 60vh;
+    background-color: white;
+    box-shadow: 0 0 40px rgba(0,0,0,0.16);
+    overflow: hidden;
+    margin: 0 auto;
+    border-radius: 12px;
+    
+  }
+  #login-form {
+    margin-top: 71px;
+    margin-bottom: 96px;
+    margin-right: 140px;
+    margin-left: 40px;
+    flex: 1 0 100%;
+    max-width: 628px;
+    max-height: 595px;
+    width: 100%;
+    padding: 60px;
+    // border: 1px solid #888888;
+    border-radius: 3px;
+    box-shadow: 0 0 10px #888888;
+  }
+  #login-form p {
+    margin-bottom: 30px;
+  }
+  #login-form p.form-title {
+    text-align: center;
+    color: #000000;
+    font-family: 'DBOzoneX';
+    font-size: 36px;
+    line-height: 1;
+    margin-bottom: 0;
+  }
+  #login-form .ant-form-item-label > label.ant-form-item-required::before {
+    display: none;
+  }
+  .ant-form-item-control-input-content {
+    text-align: center;
+  }
+  #login-form .ant-input-affix-wrapper {
+    padding: 12px 15px;
+  }
+  #login-form_username {
+    font-family: 'DBOzoneX';
+    font-size: 30px;
+    height: 23px;
+  }
+  #login-form_password {
+    font-family: 'DBOzoneX';
+    font-size: 30px;
+    height: 23px;
+  }
+  .login-form-button {
+    text-align: center;
+    width: 140px;
+    height: 60xp;
+    letter-spacing: 0px;
+    border-radius: 1px;
+    font-family: 'DBOzoneX';
+    font-size: 28px;
+    background: #007BC1;
+  }
+  .illustration-wrapper {
+    display: flex;
+    align-items: flex-start;
+    max-width: 900px;
+    min-height: 100%;
+    background-color: #fffdf2;
+  }
+  .illustration-wrapper img {
+    display: block;
+    width: 100%;
+  }
+  @media screen and (max-width: 1023px) {
+    .login-box {
+      flex-direction: column;
+      box-shadow: none;
+    }
+    .illustration-wrapper {
+        display: none;
+    }
+    #login-form {
+      max-width: 100%;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      margin-right: 0px;
+      margin-left: 0px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .login-box {
+      flex-direction: column;
+      box-shadow: none;
+    }
+    .illustration-wrapper {
+      display: none;
+    }
+    #login-form {
+      max-width: 100%;
+    }
+  }

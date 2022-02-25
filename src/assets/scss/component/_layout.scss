@@ -1,0 +1,14 @@
+.app-layout{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    border-radius: 5px;
+    .container-fluid{
+        padding: 1rem 3rem;
+        display: flex;
+    }
+}
+
+.ant-layout {
+    border-radius: 10px
+}

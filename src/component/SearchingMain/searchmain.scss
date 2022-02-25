@@ -1,0 +1,22 @@
+.ant-input-affix-wrapper > input.ant-input {
+  block-size: 30px;
+  font-size: 14px;
+}
+
+.parent {
+  text-align: left;
+  height: 20px;
+  width: 100%;
+}
+.child {
+  display: inline;
+}
+
+.parent-right {
+  text-align: right;
+  height: 20px;
+  width: 100%;
+}
+.child-right {
+  display: inline;
+}
