@@ -24,6 +24,7 @@
 
 .App {
   font-family: "DBOzoneX";
+  padding: 10;
 }
 
 .cell {
@@ -45,4 +46,29 @@
 
 .ant-layout-content {
   padding: 10px;
+}
+.ant-modal-body {
+  font-size: 24px;
+}
+
+.ant-btn {
+  font-size: 22px;
+}
+
+.ant-modal-footer {
+  padding: 10px 10px;
+  text-align: right;
+
+  // border-radius: 0 0 2px 2px;
+}
+
+img,
+svg {
+  margin-right: 10px;
+  margin-left: 12px;
+  margin-top: -8px;
+  justify-content: center;
+  align-items: center;
+  height: 17.45px;
+  width: 19.66px;
 }

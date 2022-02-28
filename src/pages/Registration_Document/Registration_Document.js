@@ -3,7 +3,7 @@ import "./style.scss";
 // import { Calendar, Badge } from "antd";
 import FetchRegistrationData from "../../services/fetchRegistrationData";
 
-import { Calendar, Modal } from "antd";
+import { Calendar, Modal, Badge } from "antd";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
@@ -16,30 +16,31 @@ const EventCell = ({ d, event, eventIdx }) => {
 
   return (
     <li ref={drager} className="cell" onClick={() => setShow(true)}>
-      {event.title}
+      <Badge status={event.type} text={event.title} />
+      {/* {event.title} */}
     </li>
   );
 };
 
 const CalendarCell = ({ date, events }) => {
-  const { setShow, moveEvent } = useContext(Ctx);
+  // const { setShow, moveEvent } = useContext(Ctx);
 
-  const [, droper] = useDrop({
-    // accept 是一个标识，需要和对应的 drag 元素中 item 的 type 值一致，否则不能感应
-    accept: "event",
-    drop: (item, monitor) => {
-      //console.log(item, monitor);
-      setShow(true);
-      moveEvent(item.d, item.eventIdx, date.format("D"));
-    },
-  });
+  // const [, droper] = useDrop({
+  //   // accept 是一个标识，需要和对应的 drag 元素中 item 的 type 值一致，否则不能感应
+  //   accept: "event",
+  //   drop: (item, monitor) => {
+  //     //console.log(item, monitor);
+  //     setShow(true);
+  //     moveEvent(item.d, item.eventIdx, date.format("D"));
+  //   },
+  // });
 
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, "0");
 
   return (
     <div
-      ref={droper}
+      // ref={droper}
       style={{
         cursor: "default",
         margin: "0 4px",
@@ -85,9 +86,15 @@ const CalendarCell = ({ date, events }) => {
 const Ctx = React.createContext(null);
 
 const data0 = {
+  february: {
+    1: [
+      { id: 1, type: "successs", title: "success" },
+      { id: 2, type: "successs", title: "fail" },
+    ],
+  },
   10: [
     { id: 1, type: "successs", title: "system1" },
-    { id: 2, title: "system2" },
+    { id: 2, type: "successs", title: "system2" },
   ],
 };
 
@@ -95,19 +102,19 @@ const Resgistration = () => {
   const [show, setShow] = useState(false);
 
   const [data, setData] = useState(data0);
-  const moveEvent = (oldD, oldIdx, newD) => {
-    console.log(oldD, oldIdx, newD);
-    setData((data) => {
-      let newData = { ...data };
-      if (!newData.hasOwnProperty(newD)) {
-        newData[newD] = [];
-      }
-      newData[newD].push(data[oldD][oldIdx]);
-      console.log(newData);
-      newData[oldD].splice(oldIdx, 1);
-      return newData;
-    });
-  };
+  // const moveEvent = (oldD, oldIdx, newD) => {
+  //   console.log(oldD, oldIdx, newD);
+  //   setData((data) => {
+  //     let newData = { ...data };
+  //     if (!newData.hasOwnProperty(newD)) {
+  //       newData[newD] = [];
+  //     }
+  //     newData[newD].push(data[oldD][oldIdx]);
+  //     console.log(newData);
+  //     newData[oldD].splice(oldIdx, 1);
+  //     return newData;
+  //   });
+  // };
 
   const cellRenderFunc = (date) => {
     const d = date.format("D");
@@ -122,7 +129,7 @@ const Resgistration = () => {
       </Modal>
 
       <DndProvider backend={HTML5Backend}>
-        <Ctx.Provider value={{ setShow, moveEvent }}>
+        <Ctx.Provider value={{ setShow }}>
           <Calendar onSelect={null} dateFullCellRender={cellRenderFunc} />
         </Ctx.Provider>
       </DndProvider>

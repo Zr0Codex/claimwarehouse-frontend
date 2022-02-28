@@ -5,13 +5,14 @@ import test from "../pages/finddocumentContainer/test";
 // import SearchMain from "../component/SearchingMain/Searchmain";
 import SearchDocumentBox from "../pages/finddocumentContainer/SearchDocumentBox";
 import Resgistration from "../pages/Registration_Document/Registration_Document";
+import ResgisTRY from "../pages/Registration_Document/ResgisTRY";
 
 const HomeRoutes = {
   sub1: [
     {
       Id: 1,
       path: "/home/search_document_warehouse",
-      component: SearchDocumentBox,
+      component: ResgisTRY,
       wording: "ค้นหากล่องเอกสาร <br/> (สำหรับเจ้าหน้าที่งานคลัง)",
       view_role: ["admin", "user"],
       menu_wording: "ค้นหากล่องเอกสาร",
