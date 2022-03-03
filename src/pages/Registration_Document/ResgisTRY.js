@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Calendar, Badge, Modal, Checkbox, Input } from "antd";
-import { FieldTimeOutlined } from "@ant-design/icons";
+import { Calendar, Badge, Modal, Checkbox, Input, Menu, Dropdown } from "antd";
+import { FieldTimeOutlined, MoreOutlined } from "@ant-design/icons";
 import moment from "moment";
 
 const EventCell = ({ event, status }) => {
@@ -18,7 +18,7 @@ const Ctx = React.createContext(null);
 const ResgisTRY = () => {
   const [show, setShow] = useState(false);
   const [contents, setContent] = useState([]);
-  let now = moment().format("dddd, DD MMM YYYY : hh:mm:ss A");
+  let now = moment().format("dddd, DD MMM YYYY : hh:mm A");
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -67,6 +67,13 @@ const ResgisTRY = () => {
     );
   }
 
+  const menu = (
+    <Menu>
+      <Menu.Item key="0">delete</Menu.Item>
+      <Menu.Item key="1">edit</Menu.Item>
+    </Menu>
+  );
+
   return (
     <>
       <Modal
@@ -83,12 +90,18 @@ const ResgisTRY = () => {
         <div style={{ padding: "7px" }}>
           <span>
             <span>
-              <Checkbox style={{ fontSize: "23px" }} defaultChecked>
+              <Checkbox style={{ fontSize: "20px" }} defaultChecked>
                 {" "}
                 ได้รับเอกสารแล้ว
               </Checkbox>
               <FieldTimeOutlined />
               {now}
+              <Dropdown overlay={menu} trigger={["click"]}>
+                <MoreOutlined
+                  style={{ fontSize: "20px" }}
+                  onClick={(e) => e.preventDefault()}
+                />
+              </Dropdown>
             </span>
           </span>
         </div>
@@ -101,9 +114,24 @@ const ResgisTRY = () => {
           <Input />
         </div>
       </Modal>
-      <Ctx.Provider value={{ setShow }}>
-        <Calendar dateCellRender={dateCellRender} />
-      </Ctx.Provider>
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+        }}
+      >
+        <Ctx.Provider value={{ setShow }}>
+          <Calendar
+            // fullscreen={false}
+            dateCellRender={dateCellRender}
+            style={{
+              overflowY: "scroll",
+              height: "500px",
+              width: "auto",
+            }}
+          />
+        </Ctx.Provider>
+      </div>
     </>
   );
 };

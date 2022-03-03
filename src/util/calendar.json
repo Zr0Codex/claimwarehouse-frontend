@@ -31,11 +31,19 @@
       "data": [
         { 
           "type": "warning", 
-          "content": "This is kkk"
+          "content": "This is note1"
         },
         { 
           "type": "success", 
-          "content": "This is wxg." 
+          "content": "This is note2." 
+        },
+        { 
+          "type": "success", 
+          "content": "This is note3." 
+        },
+        { 
+          "type": "success", 
+          "content": "This is note4." 
         }
       ]
     }

@@ -12,7 +12,7 @@ const HomeRoutes = {
     {
       Id: 1,
       path: "/home/search_document_warehouse",
-      component: ResgisTRY,
+      component: SearchDocument,
       wording: "ค้นหากล่องเอกสาร <br/> (สำหรับเจ้าหน้าที่งานคลัง)",
       view_role: ["admin", "user"],
       menu_wording: "ค้นหากล่องเอกสาร",
@@ -20,7 +20,7 @@ const HomeRoutes = {
     {
       Id: 2,
       path: "/home/search_document_user",
-      component: SearchDocument,
+      component: test,
       wording: "ค้นหาเอกสาร <br/> (สำหรับผู้ขอเบิกเอกสาร)",
       view_role: ["admin"],
       menu_wording: "ค้นหาเอกสาร / ขอเบิกเอกสาร",
@@ -60,7 +60,7 @@ const HomeRoutes = {
     {
       Id: 7,
       path: "/home/registration_document",
-      component: Resgistration,
+      component: ResgisTRY,
       wording: "ทะเบียนตรวจรับเอกสาร",
       view_role: ["admin", "user"],
       menu_wording: "ทะเบียนตรวจรับเอกสาร",

@@ -6,6 +6,7 @@
     "@ant-design/icons": "^4.7.0",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "@magicbell/magicbell-react": "^8.5.6",
     "@mui/material": "^5.4.1",
     "@szhsin/react-menu": "^2.3.4",
     "@testing-library/jest-dom": "^5.16.2",
