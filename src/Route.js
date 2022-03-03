@@ -13,7 +13,6 @@ import { Route } from "react-router-dom";
 import { Layout } from "antd";
 
 import HomeRoutes from "./util/HomeRoutes";
-import CustomFooter from "./component/footer/footer";
 
 const { Content, Footer } = Layout;
 

@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./header";
+import Footer from "./footer";
 import Sidenav from "./sidenav/sidenav";
 
 const CustomLayout = (props) => {
@@ -26,6 +27,7 @@ const CustomLayout = (props) => {
       <div style={{ borderRadius: "10px", height: "100%" }}>
         {props.children}
       </div>
+      <Footer />
     </main>
   );
 };
