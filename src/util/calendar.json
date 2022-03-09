@@ -1,47 +1,57 @@
 [
 
     {
+      "id": 1,
       "date": "2022/02/01",
       "data": [
         { 
+          "id": 1,
           "type": "warning", 
           "content": "This is warning event."
         },
-        { 
+        { "id": 2,
           "type": "success", 
           "content": "This is usual event." 
         }
       ]
     },
     {
+      "id": 2,
       "date": "2022/02/02",
       "data": [
         { 
+          "id": 1,
           "type": "warning", 
           "content": "This is asdasd"
         },
         { 
+          "id": 2,
           "type": "success", 
           "content": "This is wewwwQWEQWvent." 
         }
       ]
     },
     {
+      "id": 3,
       "date": "2022/03/02",
       "data": [
         { 
+          "id": 1,
           "type": "warning", 
           "content": "This is note1"
         },
         { 
+          "id": 2,
           "type": "success", 
           "content": "This is note2." 
         },
         { 
+          "id": 3,
           "type": "success", 
           "content": "This is note3." 
         },
         { 
+          "id": 4,
           "type": "success", 
           "content": "This is note4." 
         }

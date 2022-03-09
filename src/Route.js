@@ -14,7 +14,7 @@ import { Layout } from "antd";
 
 import HomeRoutes from "./util/HomeRoutes";
 
-const { Content, Footer } = Layout;
+const { Content } = Layout;
 
 function AppRouter(props) {
   const [user, setUser] = useState(null);
@@ -67,7 +67,7 @@ function AppRouter(props) {
                       style={{
                         borderRadius: "10px",
                         maxWidth: "80%",
-                        maxHeight: "100%",
+                        maxHeight: "100vh",
                       }}
                     >
                       <Content>
@@ -102,8 +102,8 @@ function AppRouter(props) {
                     <Layout
                       style={{
                         borderRadius: "10px",
-                        width: "80%",
-                        height: "100%",
+                        maxWidth: "80%",
+                        maxHeight: "100vh",
                       }}
                     >
                       <Content>

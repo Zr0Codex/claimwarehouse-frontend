@@ -1,0 +1,27 @@
+`
+    UPDATE calendar_batch
+    SET data = (
+      WITH calendar_batch AS(
+        SELECT data FROM calendar_batch as data
+      )
+      SELECT
+          json_agg(elems) as data
+      FROM calendar_batch,
+          json_array_elements(data::json) as elems
+      WHERE elems ->> 'data_id' <> '${data.data_id}'
+      GROUP BY id
+    )
+    WHERE id = ${id};
+
+  `
+
+
+
+  UPDATE calendar_batch SET
+    data = jsonb_set( data, 'data', array_to_json(
+      array_remove( ARRAY(
+        SELECT json_array_elements_text( COALESCE( data::json->'data', '[]' ) )
+      ), ${con} )
+    )::jsonb )
+    WHERE id = ${id}
+    RETURNING *;

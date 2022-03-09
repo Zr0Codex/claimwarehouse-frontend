@@ -21,6 +21,118 @@ app.use(function (req, res, next) {
 
 const { v1: uuidv1, v4: uuidv4 } = require("uuid");
 
+const { Client } = require("pg");
+
+const client = new Client({
+  user: "postgres",
+  host: "localhost",
+  database: "postgres",
+  password: "xcalculusx",
+  port: 5432,
+});
+
+client.connect();
+
+app.get("/create_table", function (req, res) {
+  const query = `
+    CREATE TABLE calendar_batch (
+        id serial PRIMARY KEY,
+        date varchar (50) NOT NULL,
+        data json
+    );
+  `;
+
+  try {
+    const res = client.query(query);
+    console.log("Table is successfully created", res);
+  } catch (err) {
+    console.log(err.stack);
+  } finally {
+    // client.close();
+  }
+});
+
+app.post("/remove_calendar", function (req, response) {
+  var id = req.body.id;
+  var data = req.body.data;
+  var con = JSON.stringify(data);
+  console.log("data backend", id);
+  const query_for_remove_rows = `
+    SELECT "data", ARRAY_LENGTH("data",1) FROM "calendar_batch" WHERE "id"= '${id}';
+  `;
+  const query = `
+    UPDATE calendar_batch i
+    SET    data = i2.data
+    FROM  (
+      SELECT id, array_to_json(array_agg(elem)) AS data
+      FROM   calendar_batch i2
+          , json_array_elements(i2.data) elem
+      WHERE  elem->>'id' <> '${data["id"]}'
+      GROUP  BY 1
+      ) i2
+    WHERE i2.id = i.id
+    AND   json_array_length(i2.data) < json_array_length(i.data)
+    RETURNING *;
+  `;
+
+  // if()
+
+  client.query(query, (err, res) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    response.send(res);
+    console.log("res", res);
+    console.log("Data REMOVE successful");
+    // client.end();
+  });
+  // response.end();
+});
+
+app.post("/insert", function (req, res) {
+  var id = req.body.id;
+  var date = req.body.date;
+  var data = req.body.data;
+  var con = JSON.stringify(data);
+  const query = `
+    INSERT INTO calendar_batch (date, data)
+    SELECT '${date}', '${con}' 
+    WHERE NOT EXISTS (
+      SELECT date FROM calendar_batch
+      WHERE date = '${date}' 
+    )  
+  `;
+
+  client.query(query, (err, res) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log("Data insert successful", res.rows);
+    // client.end();
+  });
+  res.end();
+});
+
+app.get("/calendar_data/all", function (req, response) {
+  const query = `
+    SELECT * FROM calendar_batch
+  `;
+  client.query(query, (err, res) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    // var data = JSON.stringify(res.rows);
+    response.send(res.rows);
+    console.log("call data successful");
+    // client.end();
+    // response.end();
+  });
+  //response.end();
+});
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
