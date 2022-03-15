@@ -20,7 +20,7 @@ const HomeRoutes = {
     {
       Id: 2,
       path: "/home/search_document_user",
-      component: test,
+      component: Resgistration,
       wording: "ค้นหาเอกสาร <br/> (สำหรับผู้ขอเบิกเอกสาร)",
       view_role: ["admin"],
       menu_wording: "ค้นหาเอกสาร / ขอเบิกเอกสาร",

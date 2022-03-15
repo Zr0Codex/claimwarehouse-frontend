@@ -96,14 +96,15 @@ app.post("/insert", function (req, res) {
   var data = req.body.data;
   var con = JSON.stringify(data);
   const query = `
-    INSERT INTO calendar_batch (date, data)
-    SELECT '${date}', '${con}' 
-    WHERE NOT EXISTS (
-      SELECT date FROM calendar_batch
-      WHERE date = '${date}' 
-    )  
+    
+      INSERT INTO calendar_batch (date, data)
+      VALUES('${date}', '${con}')  
+      ON CONFLICT (date) 
+      DO 
+        UPDATE SET data = EXCLUDED.data || ';' || calendar_batch.data;
+    
   `;
-
+  console.log("query", query);
   client.query(query, (err, res) => {
     if (err) {
       console.error(err);

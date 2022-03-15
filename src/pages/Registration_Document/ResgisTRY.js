@@ -100,16 +100,17 @@ const ResgisTRY = () => {
       const dateValue = value.format("yyyy/MM/DD");
 
       for (var content in contents) {
-        if (contents.hasOwnProperty(content)) {
-          // console.log("content", contents[content]);
+        if (contents[content] !== "null") {
           switch (dateValue) {
             case contents[content].date:
               listData = contents[content];
-              // console.log("listData", listData);
               break;
             default:
           }
         }
+        // if (contents.hasOwnProperty(content)) {
+
+        // }
       }
       return listData || [];
     } catch (error) {}
@@ -122,16 +123,18 @@ const ResgisTRY = () => {
       // console.log("listData", listData.data);
       return (
         <ul className="events">
-          {parse.map((item) => (
-            <li key={item.id}>
-              <EventCell
-                event={item}
-                status={item.type}
-                id={listData.id}
-                date={listData.date}
-              />
-            </li>
-          ))}
+          {parse
+            .filter((item) => item.content != null)
+            .map((item) => (
+              <li key={item.id}>
+                <EventCell
+                  event={item}
+                  status={item.type}
+                  id={listData.id}
+                  date={listData.date}
+                />
+              </li>
+            ))}
         </ul>
       );
     } catch (error) {}

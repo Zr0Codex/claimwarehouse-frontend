@@ -25,3 +25,12 @@
     )::jsonb )
     WHERE id = ${id}
     RETURNING *;
+
+
+
+    INSERT INTO calendar_batch (date, data)
+    SELECT '${date}', '${con}' 
+    WHERE NOT EXISTS (
+      SELECT date FROM calendar_batch
+      WHERE date = '${date}' 
+    )
