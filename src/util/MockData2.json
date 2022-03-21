@@ -1,0 +1,52 @@
+{ 
+    "MockData": [
+      {
+        "key": "1",
+        "boxStorageNumber": "-",
+        "boxNumber": "1224/54",
+        "documentNumber": "2",
+        "documentType": "01. มณ/บอกล้าง/ปฏิเสธ",
+        "owner": "นายสมชาย สินไหมทดแทน",
+        "documentDate": "12/12/2564",
+        "documentStatus": "จัดเก็บ",
+        "action": ""
+      },
+      {
+        "key": "2",
+        "boxStorageNumber": "-",
+        "boxNumber": "1225/54",
+        "documentNumber": "2",
+        "documentType": "02 ค่าทดแทน อบ./ รพ./ สภ.",
+        "owner": "นายสมชาย สินไหมทดแทน",
+        "documentDate": "12/12/2564",
+        "documentStatus": "คืนเอกสาร",
+        "action": "",
+        "responsive": ["sm"]
+      },
+      {
+        "key": "3",
+        "boxStorageNumber": "-",
+        "boxNumber": "1226/54",
+        "documentNumber": "2",
+        "documentType": "04. ร้องเรียน",
+        "owner": "นายสมชาย สินไหมทดแทน",
+        "documentDate": "12/12/2564",
+        "documentStatus": "อยู่ระหว่างเบิก",
+        "action": "",
+        "responsive": ["sm"]
+      },
+      {
+        "key": "4",
+        "boxStorageNumber": "-",
+        "boxNumber": "1226/54",
+        "documentNumber": "1",
+        "documentType": "04. ร้องเรียน",
+        "owner": "นายสมชาย สินไหมทดแทน",
+        "documentDate": "12/12/2564",
+        "documentStatus": "อยู่ระหว่างเบิก",
+        "action": "",
+        "responsive": ["sm"]
+      }
+  
+    ]
+  }

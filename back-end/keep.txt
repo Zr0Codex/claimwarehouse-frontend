@@ -34,3 +34,10 @@
       SELECT date FROM calendar_batch
       WHERE date = '${date}' 
     )
+
+
+    INSERT INTO calendar_batch (date, data)
+      VALUES('${date}', '${con}')  
+      ON CONFLICT (date) 
+      DO 
+        UPDATE SET data = EXCLUDED.data || ';' || calendar_batch.data;
