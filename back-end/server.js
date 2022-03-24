@@ -160,13 +160,42 @@ app.post("/login", function (req, res) {
   if (user_name === "admin" && password === "admin@123") {
     res.write(
       JSON.stringify({
-        username: user_name,
-        firstName: "super",
-        lastName: "admin",
-        role: "super admin",
-        userId: "2901272",
         token: uuidv4(),
-        user_role: "admin",
+        employee_id: 8986565,
+        firstName: "ต้นตระการ",
+        lastName: "ก็มันง่วงอ่ะ",
+        group_code: "เจ้าหน้าที่คลัง",
+        group_menu: [
+          {
+            menu: "MWH1002",
+            // menu_wording: "ค้นหากล่องเอกสาร (สำหรับเจ้าหน้าที่งานคลัง)",
+            add: 1,
+            edit: 1,
+            view: 1,
+            delete: 1,
+          },
+          {
+            menu: "MWH1007",
+            add: 1,
+            edit: 1,
+            view: 1,
+            delete: 1,
+          },
+          {
+            menu: "MWH3001",
+            add: 1,
+            edit: 1,
+            view: 1,
+            delete: 1,
+          },
+          {
+            menu: "MWH3002",
+            add: 1,
+            edit: 1,
+            view: 1,
+            delete: 1,
+          },
+        ],
       })
     );
   } else {

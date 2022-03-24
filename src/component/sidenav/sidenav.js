@@ -16,7 +16,7 @@ import { withRouter, Link } from "react-router-dom";
 const { SubMenu } = Menu;
 
 // submenu keys of first level
-const rootSubmenuKeys = ["sub1", "sub2", "sub4"];
+const rootSubmenuKeys = ["sub1", "sub2", "sub3"];
 
 // eslint-disable-next-line
 const SidNav = (props) => {
@@ -31,6 +31,46 @@ const SidNav = (props) => {
     }
   };
 
+  function compare(values) {
+    let data1 = JSON.parse(localStorage.getItem("group_menu"));
+    for (var i in data1) {
+      if (data1[i].menu.includes(values)) {
+        return values;
+      }
+    }
+  }
+  var isDocument_menu = false;
+  var isReport_menu = false;
+  var isMaintain = false;
+  function compareMenuItem(values) {
+    let group_menu = JSON.parse(localStorage.getItem("group_menu"));
+    for (var group in group_menu) {
+      for (var document_menu in values.document_menu) {
+        if (
+          group_menu[group].menu === values.document_menu[document_menu].menu_id
+        ) {
+          isDocument_menu = true;
+        }
+      }
+      for (var report_menu in values.report_menu) {
+        if (
+          group_menu[group].menu === values.report_menu[report_menu].menu_id
+        ) {
+          isReport_menu = true;
+        }
+      }
+      for (var maintain_permission in values.maintain_permission) {
+        if (
+          group_menu[group].menu ===
+          values.maintain_permission[maintain_permission].menu_id
+        ) {
+          isMaintain = true;
+        }
+      }
+    }
+  }
+
+  compareMenuItem(HomeRoutes);
   return (
     <>
       <Menu
@@ -42,101 +82,148 @@ const SidNav = (props) => {
           borderRadius: "10px",
         }}
       >
-        <SubMenu
-          key="sub1"
-          icon={<MenuIcon width="44" height="42" />}
-          title="คลังเอกสารสินไหม"
-          style={{
-            width: 256,
-            height: "100%",
-            // marginBottom: '20px',
-            background: "#FFFFF",
-            borderRadius: "10px",
-            // border: '2px solid red',
-            fontFamily: "DBOzoneX",
-            fontSize: "24px",
-            marginLeft: "auto",
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "",
-          }}
-        >
-          {HomeRoutes.sub1
-            .filter((data) =>
-              data.view_role.includes(localStorage.getItem("user_role"))
-            )
-            .map((data) => {
-              return (
-                <>
-                  <Menu.Item
-                    key={data.Id}
-                    style={{
-                      fontSize: "18px",
-                      height: "51px",
-                      paddingLeft: "40px",
-                      lineHeight: "80%",
-                    }}
-                  >
-                    {parse(data.wording)}
-                    <Link to={data.path} />
-                  </Menu.Item>
-                  <Menu.Divider />
-                </>
-              );
-            })}
-        </SubMenu>
-
+        {isDocument_menu ? (
+          <SubMenu
+            key="sub1"
+            icon={<MenuIcon width="44" height="42" />}
+            title="คลังเอกสารสินไหม"
+            style={{
+              width: 256,
+              height: "100%",
+              // marginBottom: '20px',
+              background: "#FFFFF",
+              borderRadius: "10px",
+              // border: '2px solid red',
+              fontFamily: "DBOzoneX",
+              fontSize: "24px",
+              marginLeft: "auto",
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "",
+            }}
+          >
+            {HomeRoutes.document_menu
+              .filter((data) => compare(data.menu_id))
+              .map((data) => {
+                return (
+                  <>
+                    <Menu.Item
+                      key={data.menu_id}
+                      style={{
+                        fontSize: "18px",
+                        height: "51px",
+                        paddingLeft: "40px",
+                        lineHeight: "80%",
+                      }}
+                    >
+                      {parse(data.wording)}
+                      <Link to={data.path} />
+                    </Menu.Item>
+                    <Menu.Divider />
+                  </>
+                );
+              })}
+          </SubMenu>
+        ) : (
+          ""
+        )}
         <Menu.Divider style={{ height: "10px" }} />
-
-        <SubMenu
-          key="sub2"
-          icon={
-            <img
-              className="active"
-              src={OpenBook}
-              alt="yellow star"
-              width="44"
-              height="42"
-            />
-          }
-          title="รายงาน"
-          style={{
-            width: 256,
-            height: "100%",
-            background: "#FFFFFF",
-            borderRadius: "10px",
-            // border: '1px solid red',
-            fontFamily: "DBOzoneX",
-            fontSize: "24px",
-            marginLeft: "auto",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          {HomeRoutes.sub2
-            .filter((data) =>
-              data.view_role.includes(localStorage.getItem("user_role"))
-            )
-            .map((data) => {
-              return (
-                <>
-                  <Menu.Item
-                    key={data.Id}
-                    style={{
-                      fontSize: "18px",
-                      height: "51px",
-                      paddingLeft: "40px",
-                      lineHeight: "80%",
-                    }}
-                  >
-                    {parse(data.wording)}
-                    <Link to={data.path} />
-                  </Menu.Item>
-                  <Menu.Divider />
-                </>
-              );
-            })}
-        </SubMenu>
+        {isReport_menu ? (
+          <SubMenu
+            key="sub2"
+            icon={
+              <img
+                className="active"
+                src={OpenBook}
+                alt="yellow star"
+                width="44"
+                height="42"
+              />
+            }
+            title="รายงาน"
+            style={{
+              width: 256,
+              height: "100%",
+              background: "#FFFFFF",
+              borderRadius: "10px",
+              // border: '1px solid red',
+              fontFamily: "DBOzoneX",
+              fontSize: "24px",
+              marginLeft: "auto",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {HomeRoutes.report_menu
+              .filter((data) => compare(data.menu_id))
+              .map((data) => {
+                return (
+                  <>
+                    <Menu.Item
+                      key={data.menu_id}
+                      style={{
+                        fontSize: "18px",
+                        height: "51px",
+                        paddingLeft: "40px",
+                        lineHeight: "80%",
+                      }}
+                    >
+                      {parse(data.wording)}
+                      <Link to={data.path} />
+                    </Menu.Item>
+                    <Menu.Divider />
+                  </>
+                );
+              })}
+          </SubMenu>
+        ) : (
+          ""
+        )}
+        {isMaintain ? (
+          <SubMenu
+            key="sub3"
+            icon={<MenuIcon width="44" height="42" />}
+            title="สิทธิ์การใช้งาน"
+            style={{
+              width: 256,
+              height: "100%",
+              // marginBottom: '20px',
+              background: "#FFFFF",
+              borderRadius: "10px",
+              // border: '2px solid red',
+              fontFamily: "DBOzoneX",
+              fontSize: "24px",
+              marginLeft: "auto",
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "",
+            }}
+          >
+            {HomeRoutes.maintain_permission
+              .filter((data) => compare(data.menu_id))
+              .map((data) => {
+                return (
+                  <>
+                    <Menu.Item
+                      key={data.menu_id}
+                      style={{
+                        fontSize: "18px",
+                        height: "51px",
+                        paddingLeft: "40px",
+                        lineHeight: "80%",
+                      }}
+                    >
+                      {parse(data.wording)}
+                      <Link to={data.path} />
+                    </Menu.Item>
+                    <Menu.Divider />
+                  </>
+                );
+              })}
+          </SubMenu>
+        ) : (
+          ""
+        )}
       </Menu>
     </>
   );

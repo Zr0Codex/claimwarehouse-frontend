@@ -23,7 +23,7 @@ const Header = (props) => {
     setName(
       `${localStorage.getItem("firstName")} ${localStorage.getItem(
         "lastName"
-      )} (${localStorage.getItem("role")})`
+      )} (${localStorage.getItem("group_code")})`
     );
   }, [props]);
 

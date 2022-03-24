@@ -45,7 +45,7 @@ function AppRouter(props) {
               borderRadius: "5px",
             }}
           >
-            {HomeRoutes.sub1
+            {HomeRoutes.document_menu
               .filter((data) => data.path === window.location.pathname)
               .map((data, i) => {
                 return (
@@ -82,7 +82,7 @@ function AppRouter(props) {
                 );
               })}
 
-            {HomeRoutes.sub2
+            {HomeRoutes.report_menu
               .filter((data) => data.path === window.location.pathname)
               .map((data, i) => {
                 return (
@@ -95,6 +95,42 @@ function AppRouter(props) {
                       }}
                     >
                       <span>คลังเอกสารสินไหม {">"} </span>
+                      <span style={{ color: "#1890FF" }}>
+                        {replaceString(data.menu_wording)}
+                      </span>
+                    </div>
+                    <Layout
+                      style={{
+                        borderRadius: "10px",
+                        maxWidth: "80%",
+                        maxHeight: "100vh",
+                      }}
+                    >
+                      <Content>
+                        <Route
+                          exact
+                          path={data.path}
+                          component={data.component}
+                        />
+                      </Content>
+                    </Layout>
+                  </>
+                );
+              })}
+
+            {HomeRoutes.maintain_permission
+              .filter((data) => data.path === window.location.pathname)
+              .map((data, i) => {
+                return (
+                  <>
+                    <div
+                      style={{
+                        fontSize: "20px",
+                        fontFamily: "DBOzoneX",
+                        lineHeight: "24px",
+                      }}
+                    >
+                      <span>สิทธิ์การใช้งาน {">"} </span>
                       <span style={{ color: "#1890FF" }}>
                         {replaceString(data.menu_wording)}
                       </span>
